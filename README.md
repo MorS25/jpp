@@ -82,14 +82,14 @@ For processing multiple stereo pairs stored in a directory, use:
 Note that the stereo image pairs inside the directory must be named like this: `left1.jpg`, `left2.jpg`, ... , `right1.jpg`, `right2.jpg`, ...
 
 Complete usage: jpp [OPTION...]
-  -n, --num_imgs=NUM            Number of images to be processed
-  -d, --img_dir=STR             Directory containing image pairs
-  -l, --left_img=STR            Left image file name
-  -r, --right_img=STR           Right image file name
-  -c, --calib_file=STR          Stereo calibration file name
-  -j, --jpp_config_file=STR     JPP config file name
-  -o, --output=STR              Output mode: [astar, rrt, debug]
-  -w, --write_files=NUM         Set w=1 for writing visualizations to files
+- `-n, --num_imgs=NUM` (Number of images to be processed)
+- `-d, --img_dir=STR` (Directory containing image pairs)
+- `-l, --left_img=STR` (Left image file name)
+- `-r, --right_img=STR` (Right image file name)
+- `-c, --calib_file=STR` (Stereo calibration file name)
+- `-j, --jpp_config_file=STR` (JPP config file name)
+- `-o, --output=STR` (Output mode: [astar, rrt, debug])
+- `-w, --write_files=NUM` (Set w=1 for writing visualizations to files)
 
 ## Running JPP on your Datasets
 
