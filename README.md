@@ -101,11 +101,11 @@ For example, running JPP on the KITTI dataset in `astar` mode:
 ./jpp -n 33 -d ../KITTI/ -c ../calibration/kitti_2011_09_26.yml -j ../cfg/kitti.cfg -o astar
 ```
 
-<p align="center">
+<center>
 Confidence match visualizations | Path visualization
 :------------------------------:|:-------------------------:
 ![](dumps/astar7-vis.jpg)       | ![](dumps/astar7-path.jpg)
-</p>
+</center>
 
 Running JPP on the AMRL dataset in `rrt` mode:
 
@@ -113,11 +113,11 @@ Running JPP on the AMRL dataset in `rrt` mode:
 ./jpp -n 158 -d ../AMRL/ -c ../calibration/amrl_jackal_webcam_stereo.yml -j ../cfg/amrl.cfg -o rrt
 ```
 
-<p align="center">
+<center>
 Confidence match visualizations | Path visualization
 :------------------------------:|:-------------------------:
 ![](dumps/rrt73-vis.jpg)        | ![](dumps/rrt73-path.jpg)
-</p>
+</center>
 
 ### 3. Running JPP ROS
 
