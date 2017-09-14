@@ -1,6 +1,7 @@
 ## Joint Perception and Planning For Efficient Obstacle Avoidance Using Stereo Vision
 
-This repository contains a C++ implementation of JPP for local obstacle avoidance using stereo cameras. A ROS wrapper is also included in the `ROS/` folder.
+This repository contains a C++ implementation of JPP for local obstacle avoidance using stereo cameras. A ROS wrapper is also included in the `ROS/` 
+folder.
 
 - Author: [Sourish Ghosh](http://sourishghosh.com/)
 
@@ -79,9 +80,12 @@ For processing multiple stereo pairs stored in a directory, use:
 ./jpp -n [number of pairs] -d [path/to/directory] -c [path/to/stereo/calibration/file] -j [path/to/jpp/config/file] -o [output_mode]
 ```
 
-Note that the stereo image pairs inside the directory must be named like this: `left1.jpg`, `left2.jpg`, ... , `right1.jpg`, `right2.jpg`, ...
+**Note:** stereo image pairs inside the directory must be named like this: `left1.jpg`, `left2.jpg`, ... , `right1.jpg`, `right2.jpg`, ...
 
-Complete usage: jpp [OPTION...]
+For the example datasets, calibration files are stored in the `calibration/` folder and JPP configurations are stored in the `cfg/` folder. JPP operates on 
+3 output modes (set by the `-o` flag) as of now: `astar`, `rrt`, and `debug` mode. 
+
+Complete usage: jpp [options]
 - `-n, --num_imgs=NUM` (Number of images to be processed)
 - `-d, --img_dir=STR` (Directory containing image pairs)
 - `-l, --left_img=STR` (Left image file name)
@@ -90,6 +94,48 @@ Complete usage: jpp [OPTION...]
 - `-j, --jpp_config_file=STR` (JPP config file name)
 - `-o, --output=STR` (Output mode: [astar, rrt, debug])
 - `-w, --write_files=NUM` (Set w=1 for writing visualizations to files)
+
+For example, running JPP on the KITTI dataset in `astar` mode:
+
+```bash
+./jpp -n 33 -d ../KITTI/ -c ../calibration/kitti_2011_09_26.yml -j ../cfg/kitti.cfg -o astar
+```
+
+Confidence match visualizations | Path visualization
+:------------------------------:|:-------------------------:
+![](dumps/astar7-vis.jpg)       | ![](dumps/astar7-path.jpg)
+
+Running JPP on the AMRL dataset in `rrt` mode:
+
+```bash
+./jpp -n 158 -d ../AMRL/ -c ../calibration/amrl_jackal_webcam_stereo.yml -j ../cfg/amrl.cfg -o rrt
+```
+
+Confidence match visualizations | Path visualization
+:------------------------------:|:-------------------------:
+![](dumps/rrt73-vis.jpg)        | ![](dumps/rrt73-path.jpg)
+
+### 3. Running JPP ROS
+
+Run the ROS node `navigation`:
+
+```bash
+rosrun jpp navigation -l [left/image/topic] -r [right/image/topic] -c [path/to/stereo/calibration/file] -j [path/to/jpp/config/file] -o [output_mode]
+```
+
+Complete usage: navigation [options]
+- `-l, --left_img=STR` (Left image topic name)
+- `-r, --right_img=STR` (Right image topic name)
+- `-c, --calib_file=STR` (Stereo calibration file name)
+- `-j, --jpp_config_file=STR` (JPP config file name)
+- `-o, --output=STR` (Output mode: [astar, rrt, debug])
+- `-w, --write_files=NUM` (Set w=1 for writing visualizations to files)
+
+JPP configuration parameters can be changed realtime by using `rqt_reconfigure`:
+
+```bash
+rosrun rqt_reconfigure rqt_reconfigure
+```
 
 ## Running JPP on your Datasets
 
