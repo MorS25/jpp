@@ -93,7 +93,7 @@ Complete usage: jpp [options]
 - `-c, --calib_file=STR` (Stereo calibration file name)
 - `-j, --jpp_config_file=STR` (JPP config file name)
 - `-o, --output=STR` (Output mode: [astar, rrt, debug])
-- `-w, --write_files=NUM` (Set w=1 for writing visualizations to files)
+- `-w, --write_files=NUM` (Set `w=1` for writing visualizations to files)
 
 For example, running JPP on the KITTI dataset in `astar` mode:
 
@@ -101,9 +101,11 @@ For example, running JPP on the KITTI dataset in `astar` mode:
 ./jpp -n 33 -d ../KITTI/ -c ../calibration/kitti_2011_09_26.yml -j ../cfg/kitti.cfg -o astar
 ```
 
+<p align="center">
 Confidence match visualizations | Path visualization
 :------------------------------:|:-------------------------:
 ![](dumps/astar7-vis.jpg)       | ![](dumps/astar7-path.jpg)
+</p>
 
 Running JPP on the AMRL dataset in `rrt` mode:
 
@@ -111,9 +113,11 @@ Running JPP on the AMRL dataset in `rrt` mode:
 ./jpp -n 158 -d ../AMRL/ -c ../calibration/amrl_jackal_webcam_stereo.yml -j ../cfg/amrl.cfg -o rrt
 ```
 
+<p align="center">
 Confidence match visualizations | Path visualization
 :------------------------------:|:-------------------------:
 ![](dumps/rrt73-vis.jpg)        | ![](dumps/rrt73-path.jpg)
+</p>
 
 ### 3. Running JPP ROS
 
@@ -129,7 +133,7 @@ Complete usage: navigation [options]
 - `-c, --calib_file=STR` (Stereo calibration file name)
 - `-j, --jpp_config_file=STR` (JPP config file name)
 - `-o, --output=STR` (Output mode: [astar, rrt, debug])
-- `-w, --write_files=NUM` (Set w=1 for writing visualizations to files)
+- `-w, --write_files=NUM` (Set `w=1` for writing visualizations to files)
 
 JPP configuration parameters can be changed realtime by using `rqt_reconfigure`:
 
