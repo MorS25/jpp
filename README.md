@@ -111,13 +111,9 @@ Running JPP on the AMRL dataset in `rrt` mode:
 ./jpp -n 158 -d ../AMRL/ -c ../calibration/amrl_jackal_webcam_stereo.yml -j ../cfg/amrl.cfg -o rrt
 ```
 
-<center>
-
 |Confidence match visualizations | Path visualization        |
 |:------------------------------:|:-------------------------:|
 |![](dumps/rrt73-vis.jpg)        | ![](dumps/rrt73-path.jpg) |
-
-</center>
 
 ### 3. Running JPP ROS
 
