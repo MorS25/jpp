@@ -18,7 +18,7 @@ folder.
 Use the following command to install dependencies:
 
 ```bash
-sudo apt-get install g++ cmake libpopt-dev libconfig-dev libboost-all-dev libopencv-dev python-opencv gcc-multilib
+$ sudo apt-get install g++ cmake libpopt-dev libconfig-dev libboost-all-dev libopencv-dev python-opencv gcc-multilib
 ```
 
 For compiling and running the ROS wrapper, install [ROS Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu).
@@ -30,15 +30,15 @@ For compiling and running the ROS wrapper, install [ROS Indigo](http://wiki.ros.
 Clone the repository:
 
 ```bash
-https://github.com/umass-amrl/jpp
+$ git clone https://github.com/umass-amrl/jpp
 ```
 
 The script `build.sh` compiles the JPP library:
 
 ```bash
-cd jpp
-chmod +x build.sh
-./build.sh
+$ cd jpp
+$ chmod +x build.sh
+$ ./build.sh
 ```
 
 This will create `libjpp.so` inside the `lib/` folder and put a binary file `jpp` inside the `bin/` folder. 
@@ -49,14 +49,14 @@ For compiling the ROS wrapper, `rosbuild` is used. Add the path of the ROS wrapp
 Replace `PATH` by the actual path where you have cloned the repository:
 
 ```bash
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/PATH/jpp/ROS
+$ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/PATH/jpp/ROS
 ```
 
 Execute the `build_ros.sh` script:
 
 ```bash
-chmod +x build_ros.sh
-./build_ros.sh
+$ chmod +x build_ros.sh
+$ ./build_ros.sh
 ```
 
 ## Running JPP on AMRL and KITTI Datasets
@@ -71,13 +71,13 @@ The complete example data (AMRL and KITTI) along with calibration files can be f
 After compilation, the `jpp` binary file is store inside the `bin/` folder. For processing a single pair of stereo images, use:
 
 ```bash
-./jpp -l [path/to/left/image] -r [path/to/right/image] -c [path/to/stereo/calibration/file] -j [path/to/jpp/config/file] -o [output_mode]
+$ ./jpp -l [path/to/left/image] -r [path/to/right/image] -c [path/to/stereo/calibration/file] -j [path/to/jpp/config/file] -o [output_mode]
 ```
 
 For processing multiple stereo pairs stored in a directory, use:
 
 ```bash
-./jpp -n [number of pairs] -d [path/to/directory] -c [path/to/stereo/calibration/file] -j [path/to/jpp/config/file] -o [output_mode]
+$ ./jpp -n [number of pairs] -d [path/to/directory] -c [path/to/stereo/calibration/file] -j [path/to/jpp/config/file] -o [output_mode]
 ```
 
 **Note:** stereo image pairs inside the directory must be named like this: `left1.jpg`, `left2.jpg`, ... , `right1.jpg`, `right2.jpg`, ...
@@ -98,7 +98,7 @@ Complete usage: jpp [options]
 For example, running JPP on the KITTI dataset in `astar` mode:
 
 ```bash
-./jpp -n 33 -d ../KITTI/ -c ../calibration/kitti_2011_09_26.yml -j ../cfg/kitti.cfg -o astar
+$ ./jpp -n 33 -d ../KITTI/ -c ../calibration/kitti_2011_09_26.yml -j ../cfg/kitti.cfg -o astar
 ```
 
 |Confidence match visualizations | Path visualization        |
@@ -108,7 +108,7 @@ For example, running JPP on the KITTI dataset in `astar` mode:
 Running JPP on the AMRL dataset in `rrt` mode:
 
 ```bash
-./jpp -n 158 -d ../AMRL/ -c ../calibration/amrl_jackal_webcam_stereo.yml -j ../cfg/amrl.cfg -o rrt
+$ ./jpp -n 158 -d ../AMRL/ -c ../calibration/amrl_jackal_webcam_stereo.yml -j ../cfg/amrl.cfg -o rrt
 ```
 
 |Confidence match visualizations | Path visualization        |
@@ -120,7 +120,7 @@ Running JPP on the AMRL dataset in `rrt` mode:
 Run the ROS node `navigation`:
 
 ```bash
-rosrun jpp navigation -l [left/image/topic] -r [right/image/topic] -c [path/to/stereo/calibration/file] -j [path/to/jpp/config/file] -o [output_mode]
+$ rosrun jpp navigation -l [left/image/topic] -r [right/image/topic] -c [path/to/stereo/calibration/file] -j [path/to/jpp/config/file] -o [output_mode]
 ```
 
 Complete usage: navigation [options]
@@ -134,7 +134,7 @@ Complete usage: navigation [options]
 JPP configuration parameters can be changed realtime by using `rqt_reconfigure`:
 
 ```bash
-rosrun rqt_reconfigure rqt_reconfigure
+$ rosrun rqt_reconfigure rqt_reconfigure
 ```
 
 ## Running JPP on your Datasets
@@ -152,13 +152,13 @@ If you cannot calibrate for `XR` and `XT` then just set them to the identity and
 to visualize how the point cloud looks in the robot reference frame:
 
 ```bash
-rosrun jpp dense_reconstruction -l [left/camera/topic] -r [right/camera/topic] -c [path/to/stereo/calibration/file] -j [path/to/jpp/config/file] -d 1
+$ rosrun jpp dense_reconstruction -l [left/camera/topic] -r [right/camera/topic] -c [path/to/stereo/calibration/file] -j [path/to/jpp/config/file] -d 1
 ```
 
 Visualize the point cloud in `rviz`. To tweak the `XR` and `XT` matrices so that the ground plane aligns with `z=0` start `rqt_reconfigure`:
 
 ```bash
-rosrun rqt_reconfigure rqt_reconfigure
+$ rosrun rqt_reconfigure rqt_reconfigure
 ```
 
 If you change the Euler Angles in `rqt_reconfigure` you should be able to see the point cloud transform. Note that we set `d=1` when running the 
