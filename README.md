@@ -1,4 +1,4 @@
-## Joint Perception and Planning For Efficient Obstacle Avoidance Using Stereo Vision
+# Joint Perception and Planning For Efficient Obstacle Avoidance Using Stereo Vision
 
 This repository contains a C++ implementation of JPP for local obstacle avoidance using stereo cameras. A ROS wrapper is also included in the `ROS/` 
 folder.
