@@ -105,7 +105,6 @@ int main(int argc, const char** argv) {
       
       JPP jpp(img_left, img_right, fs, cf);
       
-      printf("%s\n", output);
       if (strcmp(output, "astar") == 0) {
         pair< Mat, Mat > vis;
         if (w == 1) 
